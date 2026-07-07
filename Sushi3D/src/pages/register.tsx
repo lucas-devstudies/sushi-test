@@ -10,7 +10,7 @@ export default function Register() {
 
     async function signUp(){
         const {data, error:authError} = await supabase.auth.signUp({
-            email: email,
+            email: email.trim(),
             password: password
         })
         if(authError){
