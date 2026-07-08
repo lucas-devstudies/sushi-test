@@ -19,7 +19,7 @@ export default function Login() {
     };
 
     return(
-<section id="login" className="flex justify-center items-center h-screen">
+        <section id="login" className="flex justify-center items-center h-screen">
             <form onSubmit={(e)=> {e.preventDefault();signIn();}} className="flex flex-col gap-5 shadow-[0_0_50px_-3px] shadow-blue-950 py-4 px-5 rounded-2xl">
                 <h2 className="font-bold text-3xl">Login</h2>
                 <label className="w-100 text-start text-xl font-bold">Email:</label>
