@@ -10,6 +10,7 @@
   /* Famílias de Fontes */
   --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --font-mono: ui-monospace, Consolas, monospace;
+  --font-protest: "Protest Revolution", sans-serif;
 }
 
 /* Suas variáveis base que o Vite gerou */
