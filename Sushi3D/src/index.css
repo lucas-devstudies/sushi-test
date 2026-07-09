@@ -1,9 +1,5 @@
-/* 💡 No Tailwind v4, essa única linha importa tudo (base, components, utilities) */
 @import "tailwindcss";
-
-/* 💡 Configuração do seu Design System nativo no v4 */
 @theme {
-  /* Tokens de Cores dinâmicos (Light/Dark automáticos usando CSS Variables) */
   --color-brand-text: var(--color-text);
   --color-brand-heading: var(--color-text-h);
   --color-brand-bg: var(--color-bg);
@@ -30,7 +26,7 @@
   :root {
     --color-text: #9ca3af;
     --color-text-h: #f3f4f6;
-    --color-bg: #16171d;
+    --color-bg: rgb(8, 8, 8);
     --color-border: #2e303a;
     --color-accent: #c084fc;
     --color-accent-bg: rgba(192, 132, 252, 0.15);
