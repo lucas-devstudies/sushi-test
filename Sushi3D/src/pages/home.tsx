@@ -86,15 +86,17 @@ export default function Home() {
             </section>
             <section className='w-dvw h-auto bg-mauve-950 py-6'>
                 <h1 className="font-protest font-bold text-5xl text-white">Endereço</h1>
-                <div className="flex flex-col md:flex-row gap-20 mt-4 px-20">
+                <div className="flex flex-col md:flex-row gap-5 md:gap-10 mt-4 px-10 md:px-5">
                     {adress.map((ad)=>(
-                        <div className="bg-black mt-5 w-full border-white border-2 pb-5 h-140 md:max-h-140 overflow-hidden rounded-3xl hover:-translate-y-3 transition-all duration-300 hover:shadow-[0_0_20px_5px_rgba(146,64,14,0.4)]">
-                            <img className="w-full h-100 object-center overflow-hidden" src={ad.photo} alt="Foto da unidade do restaurante em Parintins no Amazonas" />
+                        <div className="bg-black mt-5 w-full border-white border-2 pb-5 h-auto md:max-h-180 overflow-hidden rounded-3xl hover:-translate-y-3 transition-all duration-300 hover:shadow-[0_0_20px_5px_rgba(146,64,14,0.4)]">
+                            <img className="w-full h-80 object-center object-cover overflow-hidden" src={ad.photo} alt="Foto da unidade do restaurante em Parintins no Amazonas" />
                             <div className="px-5 mt-3">
-                                <h2 className='font-bold text-white text-xl'>Unidade{ad.city}</h2>
+                                <h2 className='font-bold text-white text-xl'>Unidade {ad.city}</h2>
                                 <p className='text-start text-lg'><span className="font-bold text-white">Rua:</span> {ad.street}</p>
                                 <p className='text-start text-lg'><span className="font-bold text-white">Bairro:</span> {ad.neighborhood}</p>
                                 <p className='text-start text-lg'><span className="font-bold text-white">Cidade:</span> {ad.city}</p>
+                                <hr className="my-5"/>
+                                <button className="bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90 w-full" onClick={()=>clicado()}>Reservar agora</button>
                             </div>
                         </div>
                     ))}
