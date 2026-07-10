@@ -1,18 +1,18 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
-import DashRestaurant from './pages/dash_restaurant'
 import Login from './pages/login'
 import Register from './pages/register'
+import Home from './pages/home'
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/" element={<DashRestaurant />} />
-          <Route path="/restau" element={<DashRestaurant />} />
+          <Route path="/admin/login" element={<Login/>} />
+          <Route path="/admin/register" element={<Register/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" replace/>} />
         </Routes>
       </BrowserRouter>
     </>
