@@ -24,7 +24,7 @@ export function Navbar(){
                     </ul>
                     </div>
                     <div className="flex flex-row gap-3">
-                        <button className="bg-red-700 rounded-full px-3 py-2 font-semibold">Reservar</button>
+                        <button className="bg-red-700 rounded-full px-3 py-2 font-semibold hover:bg-red-800 active:scale-90 font-changa">Reservar</button>
                         <img src={icon2} className='md:hidden cursor-pointer w-10'></img>
                     </div>
                 </nav>

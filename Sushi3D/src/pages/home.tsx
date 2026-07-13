@@ -120,8 +120,9 @@ export default function Home() {
                     }
                 </div>
             </section>
-            <section className='w-dvw h-auto bg-mauve-950 py-6'>
+            <section className='w-dvw h-auto bg-mauve-950 py-6 px-3'>
                 <h1 className="font-protest font-bold text-5xl text-white">Endereço</h1>
+                {/* é bom ter uma parte que scroola pra direita entre as telas de android e desktop */}
                 <div className="flex flex-col md:flex-row gap-5 md:gap-10 mt-4 px-3 md:px-5">
                     {adress.map((ad, index) => {
                         return (
