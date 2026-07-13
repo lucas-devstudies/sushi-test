@@ -40,18 +40,18 @@ export default function Register() {
 
     return(
          <section id="login" className="flex justify-center items-center h-screen">
-            <form onSubmit={(e)=> {e.preventDefault();signUp();}} className="flex flex-col gap-5 shadow-[0_0_50px_-3px] shadow-blue-950 py-4 px-5 rounded-2xl">
-                <h2 className="font-bold text-3xl">Register</h2>
-                <label className="w-100 text-start text-xl font-bold">Nome:</label>
-                <input className="border border-blue-950 text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="text" onChange={(e) => setName(e.target.value)} name="name" placeholder="Digite seu nome"/>
-                <label className="w-100 text-start text-xl font-bold">Telefone:</label>
-                <input className="border border-blue-950 text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="text" onChange={(e) => setPhone(e.target.value)} name="phone" placeholder="Digite seu telefone"/>
-                <label className="w-100 text-start text-xl font-bold">Email:</label>
-                <input className="border border-blue-950 text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Digite seu email"/>
-                <label className="w-100 text-start text-xl font-bold">Senha:</label>
-                <input className="border border-blue-950 text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="password" onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Digite sua senha"/>
-                <button type="submit" className="text-xl text-center bg-blue-950 text-white font-bold py-2 rounded-xl">Criar Conta</button>
-                <a href="/login" className="text-xl text-center mb-4">Já tem uma conta? Faça login</a>
+            <form onSubmit={(e)=> {e.preventDefault();signUp();}} className="flex bg-mauve-950 flex-col gap-3 drop-shadow-[0_20px_100px_rgba(185,28,28,0.7)]  py-4 px-5 rounded-2xl">
+                <h2 className="font-bold text-3xl text-white">Register</h2>
+                <label className="w-100 text-start text-xl font-bold text-white">Nome:</label>
+                <input className="w-full border-2  text-black bg-white text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="text" onChange={(e) => setName(e.target.value)} name="name" placeholder="Digite seu nome"/>
+                <label className="w-100 text-start text-xl font-bold text-white">Telefone:</label>
+                <input className="w-full border-2  text-black bg-white text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="text" onChange={(e) => setPhone(e.target.value)} name="phone" placeholder="Digite seu telefone"/>
+                <label className="w-100 text-start text-xl font-bold text-white">Email:</label>
+                <input className="w-full border-2  text-black bg-white text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Digite seu email"/>
+                <label className="w-100 text-start text-xl font-bold text-white">Senha:</label>
+                <input className="w-full border-2  text-black bg-white text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="password" onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Digite sua senha"/>
+                <button className="bg-red-700 px-4 mt-2 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90" type="submit">Entrar</button>
+                <a href="/admin/login" className="text-xl text-center mb-4">Já tem uma conta? <span className="text-white">Faça login</span></a>
             </form>
         </section>
     )

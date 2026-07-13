@@ -104,13 +104,13 @@ export default function Home() {
                 </button>
                 
                 <div className="flex flex-col h-screen justify-center items-start px-10 overflow-hidden" style={{position:'absolute',right:0,left:0,top:'50%',transform: 'translateY(-50%)',background: 'linear-gradient(270deg, rgba(217, 217, 217, 0.00) 0%, #000 100%)'}}>
-                    <h1 className="font-protest font-bold text-9xl text-white">SUSHI<span className='text-red-700'>3D</span></h1>
-                    <p className="text-xl text-white italic">A experiência gastronômica e tecnológica do mundo</p>
-                    <h2 className='text-white text-2xl my-4'>Faça sua reserva agora mesmo</h2>
-                    <button className="bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90" onClick={()=>clicado()}>Reservar agora</button>
+                    <h1 className="font-protest font-bold text-7xl sm:text-9xl text-white">SUSHI<span className='text-red-700'>3D</span></h1>
+                    <p className="text-xl text-start text-white italic font-changa">A experiência gastronômica e tecnológica do mundo</p>
+                    <h2 className='text-white text-xl text-start sm:text-2xl my-6 sm:my-4 font-changa'>Faça sua reserva agora mesmo</h2>
+                    <button className="bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90 font-changa " onClick={()=>clicado()}>Reservar agora</button>
                 </div>
             </section>
-            <section className="w-screen">
+            <section className="w-screen px-3">
                 <h2 className='text-5xl py-6 font-bold text-white font-protest'>Pratos Exlusivos</h2>
                 <div className="flex items-center md:items-end justify-center mt-5 mb-5 flex-col md:flex-row">
                     {
@@ -128,12 +128,12 @@ export default function Home() {
                             <div key={index} className="bg-black mt-5 w-full pb-5 h-auto md:max-h-180 overflow-hidden rounded-3xl hover:-translate-y-3 transition-all duration-300 hover:shadow-[0_0_20px_5px_rgba(255,255,255,0.4)] cursor-auto">
                                 <img className="w-full h-80 object-center object-cover overflow-hidden" src={ad.photo} alt="Foto da unidade do restaurante" />
                                 <div className="px-5 mt-3">
-                                    <h2 className='font-bold text-white text-xl'>Unidade {ad.unit}</h2>
+                                    <h2 className='font-bold text-white text-2xl font-changa my-2'>Unidade {ad.unit}</h2>
                                     <p className='text-start text-lg'><span className="font-bold text-white">Rua:</span> {ad.street}</p>
                                     <p className='text-start text-lg'><span className="font-bold text-white">Bairro:</span> {ad.neighborhood}</p>
                                     <p className='text-start text-lg'><span className="font-bold text-white">Cidade:</span> {ad.city}</p>
                                     <hr className="my-5"/>
-                                    <button className="bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90 w-full cursor-pointer" onClick={() => clicado()}>Reservar agora</button>
+                                    <button className="font-changa bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90 w-full cursor-pointer" onClick={() => clicado()}>Reservar agora</button>
                                 </div>
                             </div>
                         );
@@ -154,7 +154,7 @@ export default function Home() {
                     
                     <label className="w-100 text-white text-start text-xl font-bold">Mensagem:</label>
                     <textarea className="mt-2 w-full border-2  text-black bg-white text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" onChange={(e) => setText(e.target.value)} name="Mensagem" placeholder="Sua mensagem completa"/>
-                    <button className="bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90 w-full cursor-pointer" type='submit'>Enviar</button>
+                    <button className="font-changa bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90 w-full cursor-pointer" type='submit'>Enviar</button>
                 </form>
             </section>
         </main>   

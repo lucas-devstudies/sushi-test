@@ -15,7 +15,7 @@ export function CustomCard({id,title,image}:CustomCardProps){
                 <img src={image} height={20} width={'90%'}></img>
             )}
             </div>
-            <h1 className="text-white text-3xl my-4">{title}</h1>
+            <h1 className="text-white font-changa text-3xl my-4">{title}</h1>
         </div>
         </>
     )
