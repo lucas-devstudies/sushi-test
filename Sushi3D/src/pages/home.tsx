@@ -1,7 +1,7 @@
 import icDown from '../assets/ic_down.svg' 
 import { CustomCard } from '../components/CustomCard';
 import { Navbar } from '../components/Navbar';
-import cidade1 from '../../public/food1.png'
+import { useState } from 'react';
 
 interface CustomCard{
     id:number;
@@ -21,6 +21,7 @@ const styles = {
         justifyContent: 'center'
     }
 };
+
 
 const listFoods:CustomCard[]=[
     {id:1,title:'Combo Niguiri & Hossomaki Prime.',image:'food1.png'},
@@ -52,6 +53,41 @@ const adress=[
 ]
 
 export default function Home() {
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [title, setTitle] = useState("");
+    const [text, setText] = useState("");
+
+    const sendMessage = async (event: any) => {
+        event.preventDefault();
+
+        // 1. Criamos um FormData limpo e inserimos os estados nele
+        const formData = new FormData();
+        formData.append("access_key", "4735c136-436e-4ab6-afa5-d3e5e4dc9bf1");
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("subject", title);
+        formData.append("message", text);
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+            
+            if (data.success) {
+                alert("Sucesso! Mensagem enviada com sucesso.");
+            } else {
+                alert("Erro na API da Web3Forms: " + data.message);
+            }
+        } catch (error) {
+            console.error("Erro detalhado:", error);
+            alert("Erro na rede. Verifique se sua chave está correta.");
+        }
+    };
 
     function clicado(){
         alert("desci")
@@ -86,22 +122,40 @@ export default function Home() {
             </section>
             <section className='w-dvw h-auto bg-mauve-950 py-6'>
                 <h1 className="font-protest font-bold text-5xl text-white">Endereço</h1>
-                <div className="flex flex-col md:flex-row gap-5 md:gap-10 mt-4 px-10 md:px-5">
-                    {adress.map((ad)=>(
-                        <div className="bg-black mt-5 w-full border-white border-2 pb-5 h-auto md:max-h-180 overflow-hidden rounded-3xl hover:-translate-y-3 transition-all duration-300 hover:shadow-[0_0_20px_5px_rgba(146,64,14,0.4)]">
-                            <img className="w-full h-80 object-center object-cover overflow-hidden" src={ad.photo} alt="Foto da unidade do restaurante em Parintins no Amazonas" />
-                            <div className="px-5 mt-3">
-                                <h2 className='font-bold text-white text-xl'>Unidade {ad.city}</h2>
-                                <p className='text-start text-lg'><span className="font-bold text-white">Rua:</span> {ad.street}</p>
-                                <p className='text-start text-lg'><span className="font-bold text-white">Bairro:</span> {ad.neighborhood}</p>
-                                <p className='text-start text-lg'><span className="font-bold text-white">Cidade:</span> {ad.city}</p>
-                                <hr className="my-5"/>
-                                <button className="bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90 w-full" onClick={()=>clicado()}>Reservar agora</button>
+                <div className="flex flex-col md:flex-row gap-5 md:gap-10 mt-4 px-3 md:px-5">
+                    {adress.map((ad, index) => {
+                        return (
+                            <div key={index} className="bg-black mt-5 w-full pb-5 h-auto md:max-h-180 overflow-hidden rounded-3xl hover:-translate-y-3 transition-all duration-300 hover:shadow-[0_0_20px_5px_rgba(255,255,255,0.4)] cursor-auto">
+                                <img className="w-full h-80 object-center object-cover overflow-hidden" src={ad.photo} alt="Foto da unidade do restaurante" />
+                                <div className="px-5 mt-3">
+                                    <h2 className='font-bold text-white text-xl'>Unidade {ad.unit}</h2>
+                                    <p className='text-start text-lg'><span className="font-bold text-white">Rua:</span> {ad.street}</p>
+                                    <p className='text-start text-lg'><span className="font-bold text-white">Bairro:</span> {ad.neighborhood}</p>
+                                    <p className='text-start text-lg'><span className="font-bold text-white">Cidade:</span> {ad.city}</p>
+                                    <hr className="my-5"/>
+                                    <button className="bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90 w-full cursor-pointer" onClick={() => clicado()}>Reservar agora</button>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                    
+                        );
+                    })}
                 </div>
+            </section>
+            <section className='w-dvw h-auto bg-black py-6 flex flex-col items-center px-3'>
+                <h1 className="font-protest font-bold text-5xl text-white">Contato</h1>
+                <form className="bg-mauve-950 py-5 mt-10 gap-3 px-5 rounded-xl flex flex-col items-start h-auto w-full max-w-xl shadow-[0_0_5px_3px_rgba(255,255,255,0.4)]" onSubmit={sendMessage}>
+                    <label className="w-100 text-white text-start text-xl font-bold">Nome:</label>
+                    <input className="mt-2 w-full border-2  text-black bg-white text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="text" onChange={(e) => setName(e.target.value)} name="nome" placeholder="Nome Completo"/>
+                    
+                    <label className="w-100 text-white text-start text-xl font-bold">Email:</label>
+                    <input className="mt-2 w-full border-2  text-black bg-white text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="seuemail@gmail.com"/>
+                    
+                    <label className="w-100 text-white text-start text-xl font-bold">Título:</label>
+                    <input className="mt-2 w-full border-2  text-black bg-white text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" type="text" onChange={(e) => setTitle(e.target.value)} name="Título" placeholder="Um título"/>
+                    
+                    <label className="w-100 text-white text-start text-xl font-bold">Mensagem:</label>
+                    <textarea className="mt-2 w-full border-2  text-black bg-white text-xl px-2 py-2 rounded-xl placeholder:text-gray-500" onChange={(e) => setText(e.target.value)} name="Mensagem" placeholder="Sua mensagem completa"/>
+                    <button className="bg-red-700 px-4 py-3 rounded-4xl text-white font-semibold text-xl hover:bg-red-800 active:scale-90 w-full cursor-pointer" type='submit'>Enviar</button>
+                </form>
             </section>
         </main>   
     )

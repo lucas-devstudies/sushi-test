@@ -17,7 +17,7 @@ export function Navbar(){
                     <div className="md:static absolute md:min-h-fit bg-black left-0 top-full w-full flex-items-center px-2">
                         <ul className="flex flex-col md:justify-center md:flex-row md:items-center gap-4 text-lg mb-5 mt-2 md:my-0">
                         {list.map((option)=>(
-                            <li className="w-fit font-semibold hover:font-bold">
+                            <li key={option.key} className="w-fit font-semibold hover:font-bold">
                                 <a href={option.url}>{option.key}</a>
                             </li>
                         ))}
