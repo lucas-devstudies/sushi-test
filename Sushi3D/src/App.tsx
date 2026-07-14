@@ -3,6 +3,7 @@ import './App.css'
 import Login from './pages/login'
 import Register from './pages/register'
 import Home from './pages/home'
+import CustumerReservation from './pages/customerReservation'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/admin/login" element={<Login/>} />
           <Route path="/admin/register" element={<Register/>} />
           <Route path="/" element={<Home />} />
+          <Route path="/reservation" element={<CustumerReservation/>}></Route>
           <Route path="*" element={<Navigate to="/" replace/>} />
         </Routes>
       </BrowserRouter>
