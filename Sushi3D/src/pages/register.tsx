@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { supabase } from "../../supabase/supabaseClient";
+import type { User } from "../models/User";
+import { userService } from "../services/UserService";
 
 export default function Register() {
 
@@ -9,33 +10,20 @@ export default function Register() {
     let [password, setPassword] = useState('');
 
     async function signUp(){
-        const {data, error:authError} = await supabase.auth.signUp({
-            email: email.trim(),
-            password: password
-        })
-        if(authError){
-            console.log(authError);
-            return;
+        const user:User={
+            name:name,
+            phone:phone,
+            email:email,
+            password:password
         }
-        const usuarioId = data?.user?.id;
-        
-        if(usuarioId){
-            const {error: dbError} = await supabase
-            .from('users')
-            .insert([
-                {
-                    id: usuarioId,
-                    name: name,
-                    phone: phone,
-                }
-            ]);
+        try{
+            const response = await userService.signUp(user);
+            console.log(response.data)
+            window.location.href = '/';
 
-            if(dbError){
-                console.log(dbError);
-                return;
-            }
+        }catch(error){
+            alert(error)
         }
-        console.log('Cadastro realizado com sucesso!')
     }
 
     return(

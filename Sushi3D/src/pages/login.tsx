@@ -1,23 +1,22 @@
 import { useState } from "react";
-import { supabase } from "../../supabase/supabaseClient";
-
+import type { User } from "../models/User";
+import { userService } from "../services/UserService";
 export default function Login() {
 
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
 
     async function signIn(){
-        const { data,error } = await supabase.auth.signInWithPassword({
-            email: email.trim(),
-            password: password,
-        })
-        if(error){
-            console.log(error);
-            alert('Preencha todos os campos corretamente')
-            return;
+        const user:User={
+            email:email,
+            password:password
         }
-        console.log(data);
-        window.location.href = '/';
+        try{
+            const response = await userService.signIn(user);
+            console.log(response.data)
+        }catch(error){
+            alert(error)
+        }
     };
 
     return(
